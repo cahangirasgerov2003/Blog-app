@@ -1,0 +1,16 @@
+// const state = {
+//   blogs : [
+//     {
+//       id:uuid(),
+//       title:"Title 1",
+//       description:"Desc 1",
+//       dataAdded:undefined
+//     }
+//   ],
+
+//   auth:{
+//     userId:uuid(),
+//     userName:"Cahangir Asgerov",
+//     email:"cahangirAsgerli2003@gmail.com"
+//   }
+// };
