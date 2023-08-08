@@ -1,40 +1,104 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
+import { createStore, combineReducers } from "redux";
+import { v4 as uuid } from "uuid";
 
-// import { createStore } from "redux";
+// const state = {
+//   blogs : [
+//     {
+//       id:uuid(),
+//       title:"Title 1",
+//       description:"Desc 1",
+//       dataAdded:undefined
+//     }
+//   ],
 
-// const initialState = {
-//   count: 10,
+//   auth:{
+//     userId:uuid(),
+//     userName:"Cahangir Asgerov",
+//     email:"cahangirAsgerli2003@gmail.com"
+//   }
 // };
 
-// const store = createStore((state = initialState) => {
-//   return state;
-// });
+const blogsState = [];
+const authState = {};
 
-// console.log(store.getState());
-
-// //INCREMENT DECREMENT RESET => ACTIONS (Object)
-
-// //DISPATCH
-
-// // REDUCERS
-
-import { createStore } from "redux";
-
-const initialState = {
-  count: 20,
+const addBlog = ({
+  id = uuid(),
+  title = "",
+  description = "",
+  dataAdded = undefined,
+}) => {
+  return {
+    type: "ADD_BLOG",
+    blog: {
+      id,
+      title,
+      description,
+      dataAdded,
+    },
+  };
 };
 
-const store = createStore((state = initialState) => {
-  return state;
+const removeBlog = (id) => {
+  return {
+    type: "REMOVE_BLOG",
+    id,
+  };
+};
+
+const blogReducer = (state = blogsState, action) => {
+  switch (action.type) {
+    case "ADD_BLOG":
+      return [...state, action.blog];
+    case "REMOVE_BLOG":
+      return state.filter((blog) => {
+        return blog.id !== action.id;
+      });
+    default:
+      return state;
+  }
+};
+
+const authReducer = (state = authState, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+const store = createStore(
+  combineReducers({
+    blogs: blogReducer,
+    auth: authReducer,
+  })
+);
+
+store.subscribe(() => {
+  console.log(store.getState());
 });
 
-console.log(store.getState());
+// Action Creater
+const blog1 = store.dispatch(
+  addBlog({
+    id: uuid(),
+    title: "Title 1",
+    description: "Desc 1",
+    dataAdded: undefined,
+  })
+);
 
-// DISPATCH (Object)
+store.dispatch(
+  addBlog({
+    id: uuid(),
+    title: "Title 2",
+    description: "Desc 2",
+    dataAdded: Date.now(),
+  })
+);
 
-// Reducers
+store.dispatch(removeBlog(blog1.blog.id));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
