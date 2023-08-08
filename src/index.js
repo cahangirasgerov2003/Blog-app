@@ -48,6 +48,16 @@ const removeBlog = (id) => {
   };
 };
 
+const updateBlog = (id, updateDate) => {
+  return {
+    type: "UPDATE_BLOG",
+    updateInfo: {
+      id,
+      updateDate,
+    },
+  };
+};
+
 const blogReducer = (state = blogsState, action) => {
   switch (action.type) {
     case "ADD_BLOG":
@@ -55,6 +65,12 @@ const blogReducer = (state = blogsState, action) => {
     case "REMOVE_BLOG":
       return state.filter((blog) => {
         return blog.id !== action.id;
+      });
+    case "UPDATE_BLOG":
+      return state.map((blog) => {
+        return blog.id !== action.updateInfo.id
+          ? blog
+          : { ...blog, ...action.updateInfo.updateDate };
       });
     default:
       return state;
@@ -89,7 +105,7 @@ const blog1 = store.dispatch(
   })
 );
 
-store.dispatch(
+const blog2 = store.dispatch(
   addBlog({
     id: uuid(),
     title: "Title 2",
@@ -99,6 +115,13 @@ store.dispatch(
 );
 
 store.dispatch(removeBlog(blog1.blog.id));
+
+store.dispatch(
+  updateBlog(blog2.blog.id, {
+    title: "Update title 2",
+    updateDate: Date.now(),
+  })
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
