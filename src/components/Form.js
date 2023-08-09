@@ -10,14 +10,40 @@ class Form extends Component {
       description: "",
     };
   }
+
+  submitForm = (e) => {
+    e.preventDefault();
+
+    if (this.state.title.trim() && this.state.description.trim()) {
+      this.setState({
+        error: "",
+      });
+      this.props.addForm({
+        title: this.state.title,
+        description: this.state.description,
+        addedBlog: new Date(),
+      });
+    } else {
+      this.setState({
+        error: "Please fill in all fields of the form !",
+      });
+    }
+
+    this.setState({
+      title: "",
+      description: "",
+    });
+  };
+
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.submitForm}>
           <div>
             <input
               type="text"
               placeholder="enter blog title"
+              value={this.state.title}
               onChange={(e) => {
                 this.setState({
                   title: e.target.value,
@@ -29,6 +55,7 @@ class Form extends Component {
           <div>
             <textarea
               placeholder="enter blog description"
+              value={this.state.description}
               onChange={(e) => {
                 this.setState({
                   description: e.target.value,
@@ -36,8 +63,10 @@ class Form extends Component {
               }}
             ></textarea>
           </div>
-
-          <button type="button">Save Changes</button>
+          <small style={{ color: "red" }}>{this.state.error}</small>
+          <div>
+            <button type="submit">Save Changes</button>
+          </div>
         </form>
       </div>
     );

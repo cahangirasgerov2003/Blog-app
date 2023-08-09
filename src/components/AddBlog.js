@@ -1,15 +1,23 @@
-import Form from "./Form";
-import "./addBlog.css";
-
 import React from "react";
+import "./addBlog.css";
+import Form from "./Form";
+import { connect } from "react-redux";
+import { addBlog } from "../actions/blogActions";
+import { useNavigate } from "react-router-dom";
 
-const AddBlog = () => {
+const AddBlog = (props) => {
+  const navigate = useNavigate();
   return (
     <>
       <h1>Add Blog</h1>
-      <Form />
+      <Form
+        addForm={(newBlog) => {
+          props.dispatch(addBlog(newBlog));
+          navigate("/blogs");
+        }}
+      />
     </>
   );
 };
 
-export default AddBlog;
+export default connect()(AddBlog);
