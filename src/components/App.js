@@ -7,6 +7,7 @@ import BlogListPage from "./BlogListPage";
 import BlogDetails from "./BlogDetails";
 import Contact from "./Contact";
 import NotFound from "./NotFound";
+import AddBlog from "./AddBlog";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const App = () => {
         {
           path: "/contact",
           element: <Contact />,
+        },
+        {
+          path: "/create",
+          element: <AddBlog />,
         },
         {
           path: "*",

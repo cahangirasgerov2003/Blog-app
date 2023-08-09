@@ -7,14 +7,12 @@ import store from "./store/configureStore";
 import { v4 as uuid } from "uuid";
 
 import { addBlog, removeBlog, updateBlog } from "./actions/blogActions";
-
-console.log(store);
+import { Provider } from "react-redux";
 
 store.subscribe(() => {
   console.log(store.getState());
 });
 
-// Action Creater
 const blog1 = store.dispatch(
   addBlog({
     id: uuid(),
@@ -33,6 +31,24 @@ const blog2 = store.dispatch(
   })
 );
 
+store.dispatch(
+  addBlog({
+    id: uuid(),
+    title: "Title 3",
+    description: "Desc 3",
+    dataAdded: undefined,
+  })
+);
+
+store.dispatch(
+  addBlog({
+    id: uuid(),
+    title: "Title 4",
+    description: "Desc 4",
+    dataAdded: undefined,
+  })
+);
+
 store.dispatch(removeBlog(blog1.blog.id));
 
 store.dispatch(
@@ -43,7 +59,7 @@ store.dispatch(
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <>
+  <Provider store={store}>
     <App />
-  </>
+  </Provider>
 );

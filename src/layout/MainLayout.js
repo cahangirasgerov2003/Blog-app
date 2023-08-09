@@ -7,6 +7,7 @@ const MainLayout = () => {
       <h1>Blog App</h1>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/blogs">Blogs</NavLink>
+      <NavLink to="/create">Create</NavLink>
       <NavLink to="/contact">Contact</NavLink>
 
       <div>

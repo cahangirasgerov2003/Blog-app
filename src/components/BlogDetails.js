@@ -1,14 +1,22 @@
 import React from "react";
 import "./blogDetails.css";
 import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import BlogDetailsElement from "./BlogDetailsElement";
 
-const BlogDetails = () => {
+const BlogDetails = (props) => {
   const params = useParams();
   return (
-    <div>
-      <p>Blog Details {params.id}</p>
-    </div>
+    <BlogDetailsElement
+      {...props.blogs.find((blog) => blog.id === params.id)}
+    />
   );
 };
 
-export default BlogDetails;
+const mapStateToProps = (state) => {
+  return {
+    blogs: state.blogs,
+  };
+};
+
+export default connect(mapStateToProps)(BlogDetails);
