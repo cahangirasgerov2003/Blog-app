@@ -8,6 +8,7 @@ import BlogDetails from "./BlogDetails";
 import Contact from "./Contact";
 import NotFound from "./NotFound";
 import AddBlog from "./AddBlog";
+import EditBlog from "./EditBlog";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const App = () => {
         {
           path: "/create",
           element: <AddBlog />,
+        },
+        {
+          path: "/edit/:id",
+          element: <EditBlog />,
         },
         {
           path: "*",

@@ -6,8 +6,8 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      description: "",
+      title: props.blog ? props?.blog?.title : "",
+      description: props.blog ? props?.blog?.description : "",
     };
   }
 
@@ -18,11 +18,14 @@ class Form extends Component {
       this.setState({
         error: "",
       });
+
       this.props.addForm({
         title: this.state.title,
         description: this.state.description,
         addedBlog: new Date(),
       });
+
+      //
     } else {
       this.setState({
         error: "Please fill in all fields of the form !",
