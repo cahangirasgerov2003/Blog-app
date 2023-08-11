@@ -1,0 +1,41 @@
+Set :
+// database.ref("author/name").set("Kamran");
+
+// database.ref("title").set("Blog title");
+
+// database.ref("desc").set("Blog description");
+
+// database.ref("author").set({
+//   name: "Cahangir",
+//   surname: "Asgerli",
+// });
+
+// database.ref("tags").set(["react", "Js", "Java"]);
+
+
+Remove :
+// database
+//   .ref()
+//   .remove()
+//   .then(() => {
+//     console.log("Remove complated !");
+//   })
+//   .catch((e) => {
+//     console.log("Hata : " + e);
+//   });
+
+// database.ref("title").set(null);
+// database.ref().set(null);
+
+
+Update :
+// database.ref().update({
+//   title: "Blog title 1",
+//   desc: "Blog description 1",
+//   "author/name": "Natiq",
+//   imgURL: "https://",
+// });
+
+// database.ref("author").update({
+//   name:"Kamran"  
+// });

@@ -8,7 +8,6 @@ import { v4 as uuid } from "uuid";
 
 import { addBlog, removeBlog, updateBlog } from "./actions/blogActions";
 import { Provider } from "react-redux";
-
 import "./firebase/configFirebase";
 
 store.subscribe(() => {

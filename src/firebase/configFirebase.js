@@ -1,5 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
+import firebase from "firebase/app";
+import "firebase/database"; // If using Firebase database
+import "firebase/storage"; // If using Firebase storage
 
 const firebaseConfig = {
   apiKey: "AIzaSyBOmdzecDxo1GXRer1HJl6YpcIgIJh4DYc",
@@ -11,24 +12,23 @@ const firebaseConfig = {
   appId: "1:579245759251:web:7ac1ffef6ff0400bcbd8e6",
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-const database = getDatabase(app);
+const database = firebase.database();
 
-const blogRef = ref(database);
-
-set(blogRef, {
-  title: "My blog 2",
-  desc: "My desc 2",
-  author: [
-    {
+database
+  .ref()
+  .set({
+    title: "Blog title",
+    desc: "Blog description",
+    author: {
       name: "Cahangir",
-      surName: "Asgerli",
+      surName: "Asgerov",
     },
-    {
-      name: "Kamran",
-      surName: "Asgerli",
-    },
-  ],
-});
+  })
+  .then(() => {
+    console.log("Added");
+  })
+  .catch((e) => {
+    console.log("Error : " + e);
+  });
