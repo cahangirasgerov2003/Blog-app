@@ -1,20 +1,31 @@
-import { v4 as uuid } from "uuid";
+import database from "../firebase/configFirebase";
 
 // ACTIONS CREATER
-export const addBlog = ({
-  id = uuid(),
-  title = "",
-  description = "",
-  dataAdded = undefined,
-}) => {
+export const addBlog = (blog) => {
   return {
     type: "ADD_BLOG",
-    blog: {
-      id,
-      title,
-      description,
-      dataAdded,
-    },
+    blog,
+  };
+};
+
+export const addBlogToDb = (newBlog = {}) => {
+  return (dispatch) => {
+    const { title = "", description = "", dataAdded = 0 } = newBlog;
+    database
+      .ref("blogs")
+      .push({
+        title,
+        description,
+        dataAdded,
+      })
+      .then((response) => {
+        dispatch(
+          addBlog({
+            id: response.key,
+            ...newBlog,
+          })
+        );
+      });
   };
 };
 

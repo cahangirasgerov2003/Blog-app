@@ -10,9 +10,9 @@ import { addBlog, removeBlog, updateBlog } from "./actions/blogActions";
 import { Provider } from "react-redux";
 import "./firebase/configFirebase";
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
+// store.subscribe(() => {
+//   console.log(store.getState());
+// });
 
 const blog1 = store.dispatch(
   addBlog({

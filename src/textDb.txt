@@ -12,6 +12,23 @@ Set :
 
 // database.ref("tags").set(["react", "Js", "Java"]);
 
+// database
+//   .ref()
+//   .set({
+//     title: "Blog title",
+//     desc: "Blog description",
+//     author: {
+//       name: "Cahangir",
+//       surName: "Asgerov",
+//     },
+//   })
+//   .then(() => {
+//     console.log("Added !");
+//   })
+//   .catch((e) => {
+//     console.log("Error : " + e);
+//   });
+
 
 Remove :
 // database
@@ -38,4 +55,146 @@ Update :
 
 // database.ref("author").update({
 //   name:"Kamran"  
+// });
+
+Once :
+// database
+//   .ref()
+//   .once("value")
+//   .then((snapshot) => {
+//     console.log(snapshot.val());
+//   })
+//   .catch((e) => {
+//     console.log("Reading error : ", e);
+//   });
+
+On and off :
+// database.ref().on("value", (snapshot) => {
+//   const dbValue = snapshot.val();
+//   console.log(dbValue);
+// });
+
+// setTimeout(() => {
+//   database.ref("title").set("Updated title 1");
+// }, 5000);
+
+// setTimeout(() => {
+//   database.ref("title").set("Updated title 2");
+//   database.ref().off();
+// }, 7000);
+
+// setTimeout(() => {
+//   database.ref("title").set("Updated title 3");
+// }, 10000);
+
+Firebase arrays :
+// const blogs = [
+//   {
+//     id: 1,
+//     title: "Title 1",
+//     desc: "Desc 1",
+//   },
+//   {
+//     id: 2,
+//     title: "Title 2",
+//     desc: "Desc 2",
+//   },
+//   {
+//     id: 3,
+//     title: "Title 3",
+//     desc: "Desc 3",
+//   },
+// ];
+
+// const users = [
+//   {
+//     userId: 1,
+//     name: "Cahangir",
+//   },
+//   {
+//     userId: 2,
+//     name: "Kamran",
+//   },
+// ];
+
+// const blogs = {
+//   101: {
+//     id: 1,
+//     title: "Title 1",
+//   },
+//   102: {
+//     id: 2,
+//     title: "Title 2",
+//   },
+// };
+
+// const users = {
+//   cahangir: {
+//     userId: 1,
+//     name: "Cahangir",
+//   },
+//   kamran: {
+//     userId: 2,
+//     name: "Kamran",
+//   },
+// };
+
+// database
+//   .ref()
+//   .set({
+//     blogs,
+//     users,
+//   })
+//   .then(() => {
+
+//   });
+
+// database.ref("blogs").push({
+//   id: 3,
+//   title: "Title 3",
+// });
+
+// database.ref("blogs/-NbdZtIfczH81IhSUe25").update({
+//   id: 4,
+// });
+
+Snapshot methods :
+// database.ref("products").push({
+//   name: "Samsung S5",
+//   price: 3000,
+//   isApproved: false,
+// });
+
+// database.ref("products").push({
+//   name: "Samsung S6",
+//   price: 4000,
+//   isApproved: true,
+// });
+
+// database.ref("products").push({
+//   name: "Samsung S7",
+//   price: 5000,
+//   isApproved: false,
+// });
+
+// database.ref("products").on("value", (snapshot) => {
+//   const products = [];
+//   snapshot.forEach((product) => {
+//     products.push({
+//       id: product.key,
+//       ...product.val(),
+//     });
+//   });
+//   console.log(products);
+// });
+
+// database.ref("products").on("value", (snapshot) => {
+//   const arr = Object.entries(snapshot.val());
+//   console.log(arr);
+// });
+
+Child_added :
+// database.ref("products").on("child_added", (snapshot) => {
+//   console.log(snapshot.key);
+//   console.log(snapshot.val());
 // });

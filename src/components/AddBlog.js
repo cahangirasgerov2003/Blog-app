@@ -2,7 +2,7 @@ import React from "react";
 import "./addBlog.css";
 import Form from "./Form";
 import { connect } from "react-redux";
-import { addBlog } from "../actions/blogActions";
+import { addBlogToDb } from "../actions/blogActions";
 import { useNavigate } from "react-router-dom";
 
 const AddBlog = (props) => {
@@ -12,7 +12,7 @@ const AddBlog = (props) => {
       <h1>Add Blog</h1>
       <Form
         addForm={(newBlog) => {
-          props.dispatch(addBlog(newBlog));
+          props.dispatch(addBlogToDb(newBlog));
           navigate("/blogs");
         }}
       />

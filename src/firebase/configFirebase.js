@@ -16,19 +16,4 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database
-  .ref()
-  .set({
-    title: "Blog title",
-    desc: "Blog description",
-    author: {
-      name: "Cahangir",
-      surName: "Asgerov",
-    },
-  })
-  .then(() => {
-    console.log("Added");
-  })
-  .catch((e) => {
-    console.log("Error : " + e);
-  });
+export { database as default };
