@@ -3,7 +3,7 @@ import "./editBlog.css";
 import Form from "./Form";
 import { useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateBlog } from "../actions/blogActions";
+import { updateDb } from "../actions/blogActions";
 
 const EditBlog = (props) => {
   const params = useParams();
@@ -14,7 +14,7 @@ const EditBlog = (props) => {
       <Form
         blog={props.blogs.find((blog) => blog.id === params.id)}
         addForm={(blog) => {
-          props.dispatch(updateBlog(params.id, { ...blog }));
+          props.dispatch(updateDb(params.id, { ...blog }));
           navigate("/blogs");
         }}
       />

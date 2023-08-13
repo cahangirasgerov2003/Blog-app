@@ -12,6 +12,8 @@ const blogReducer = (state = blogsState, action) => {
       return state.map((blog) => {
         return blog.id !== action.id ? blog : { ...blog, ...action.updateData };
       });
+    case "PUSH_STORE":
+      return action.blogs;
     default:
       return state;
   }

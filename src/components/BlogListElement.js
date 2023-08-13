@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./blogListElement.css";
 import { connect } from "react-redux";
-import { removeBlog } from "../actions/blogActions";
+import { removeDb } from "../actions/blogActions";
 
 import React from "react";
 
@@ -24,7 +24,7 @@ const BlogListElement = (props) => {
         <button
           type="button"
           onClick={() => {
-            props.dispatch(removeBlog(props.id));
+            props.dispatch(removeDb(props.id));
           }}
         >
           Delete
