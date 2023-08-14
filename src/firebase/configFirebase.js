@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/database"; // If using Firebase database
 import "firebase/storage"; // If using Firebase storage
-
+import "firebase/auth"; // If using Firebase authentication
 const firebaseConfig = {
   apiKey: "AIzaSyBOmdzecDxo1GXRer1HJl6YpcIgIJh4DYc",
   authDomain: "react-blog-app-f767b.firebaseapp.com",
@@ -16,4 +16,6 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-export { database as default };
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export { database as default, googleAuthProvider, firebase };

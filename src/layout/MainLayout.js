@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { logout } from "../actions/authActions";
 
 const MainLayout = () => {
   return (
@@ -9,7 +10,13 @@ const MainLayout = () => {
       <NavLink to="/blogs">Blogs</NavLink>
       <NavLink to="/create">Create</NavLink>
       <NavLink to="/contact">Contact</NavLink>
-
+      <button
+        onClick={() => {
+          logout();
+        }}
+      >
+        Logout
+      </button>
       <div>
         <Outlet />
       </div>
