@@ -7,7 +7,6 @@ import { addBlogToDb } from "../actions/blogActions";
 
 const AddBlog = (props) => {
   // const navigate = useNavigate();
-  console.log(props);
   return (
     <>
       <h1>Add Blog</h1>

@@ -14,26 +14,26 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<p className="text-center text-danger h1 mt-3">Loading...</p>);
 
-store
-  .dispatch(pullDb())
-  .then(() => {
-    root.render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
-  })
-  .catch((e) => {
-    console.log("Error : ", e);
-  });
+const renderContent = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("Login edildi");
-    console.log(user);
+    console.log("Login edildi !");
+    if (history.location.pathname === "/") {
+      history.push("/blogs");
+    }
+    store.dispatch(pullDb()).then(() => {
+      root.render(renderContent);
+    });
   } else {
-    console.log(history);
-    console.log("Logout edildi");
+    console.log("Logout edildi !");
+
     history.push("/");
+
+    root.render(renderContent);
   }
 });
