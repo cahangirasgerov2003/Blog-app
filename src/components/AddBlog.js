@@ -3,18 +3,18 @@ import "./addBlog.css";
 import Form from "./Form";
 import { connect } from "react-redux";
 import { addBlogToDb } from "../actions/blogActions";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddBlog = (props) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <>
       <h1>Add Blog</h1>
       <Form
         addForm={(newBlog) => {
           props.dispatch(addBlogToDb(newBlog));
-          // navigate("/blogs");
-          props.history.push("/");
+          navigate("/blogs");
+          // props.history.push("/");
         }}
       />
     </>

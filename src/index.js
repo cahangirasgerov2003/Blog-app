@@ -23,12 +23,12 @@ const renderContent = (
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log("Login edildi !");
-    if (history.location.pathname === "/") {
-      history.push("/blogs");
-    }
     store.dispatch(pullDb()).then(() => {
       root.render(renderContent);
     });
+    if (history.location.pathname === "/") {
+      history.push("/blogs");
+    }
   } else {
     console.log("Logout edildi !");
 
