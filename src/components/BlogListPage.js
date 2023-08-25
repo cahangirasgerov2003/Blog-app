@@ -7,6 +7,8 @@ const BlogListPage = () => {
   return (
     <div>
       <h2>
+        {/* buraya goz gezdir uzunlugu vermek ucun componenti verirsen
+        normalda ola biler bilmirem :d */}
         Blog Lists Length : <BlogList />
       </h2>
       {/* <NavLink to="/blogs/1">Blog 1</NavLink>

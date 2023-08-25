@@ -5,35 +5,23 @@ import "./scss/custom.scss";
 
 import store from "./store/configureStore";
 
-import { pullDb } from "./actions/blogActions";
 import { Provider } from "react-redux";
 import "./firebase/configFirebase";
-import { firebase } from "./firebase/configFirebase";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<p className="text-center text-danger h1 mt-3">Loading...</p>);
+root.render(<Provider store={store}>
+  <App />
+</Provider>);
 
-const renderContent = (
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log("Login edildi !");
-    store.dispatch(pullDb()).then(() => {
-      root.render(renderContent);
-    });
-    if (history.location.pathname === "/") {
-      history.push("/blogs");
-    }
-  } else {
-    console.log("Logout edildi !");
 
-    history.push("/");
 
-    root.render(renderContent);
-  }
-});
+
+
+ // store.dispatch(pullDb()).then(() => {
+    //   root.render(renderContent);
+    // });
+    // if (history.location.pathname === "/") {
+    //   history.push("/blogs");
+    // }
