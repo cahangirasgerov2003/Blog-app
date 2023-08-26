@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { logout } from "../actions/authActions";
 import { useSelector } from "react-redux";
 
 const MainLayout = () => {
   const navigate = useNavigate();
-  const state = useSelector((state) => state.auth);
+  const stateAuth = useSelector((state) => state.auth);
+  const navigateRef = useRef(navigate);
   useEffect(() => {
-    console.log("salam");
-    if (state.isLoggin) {
-      navigate("/blogs");
+    if (stateAuth.isLoggin) {
+      navigateRef.current("/blogs");
     }
-  }, [state.isLoggin]);
+  }, [stateAuth.isLoggin]);
 
   return (
     <header>

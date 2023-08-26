@@ -91,3 +91,10 @@ export const pullDb = () => {
     dispatch(pushStore(blogs));
   };
 };
+
+// ACTIONS CREATER
+export const deleteBlogs = () => {
+  return {
+    type: "DELETE_BLOGS",
+  };
+};

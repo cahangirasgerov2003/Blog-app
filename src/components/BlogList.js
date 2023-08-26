@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import "./blogList.css";
 import BlogListElement from "./BlogListElement";
 import { pullDb } from "../actions/blogActions";
 
-const BlogList = () => {
-  const state = useSelector((state) => state);
+const BlogList = (props) => {
   const dispatch = useDispatch();
-  const { auth, blogs } = state;
   useEffect(() => {
-    if (auth.isLoggin) {
+    if (props.auth.isLoggin === true) {
+      console.log("pullDb");
       dispatch(pullDb());
     }
-  }, []);
+  }, [dispatch, props.auth.isLoggin]);
   return (
     <>
-      {blogs?.length}
-      {blogs?.map((blog) => {
+      {props.blogs?.length}
+      {props.blogs?.map((blog) => {
         return <BlogListElement {...blog} key={blog.id} />;
       })}
     </>
   );
 };
 
-// const mapStateToProps = (state /*ownProps*/) => {
-//   return {
-//     blogs: state.blogs,
-//   };
-// };
+const mapStateToProps = (state /*ownProps*/) => {
+  return {
+    blogs: state.blogs,
+    auth: state.auth,
+  };
+};
 
-export default BlogList;
+export default connect(mapStateToProps)(BlogList);

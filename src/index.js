@@ -7,7 +7,7 @@ import store from "./store/configureStore";
 
 // import { pullDb } from "./actions/blogActions";
 import { Provider } from "react-redux";
-import "./firebase/configFirebase";
+// import "./firebase/configFirebase";
 // import { firebase } from "./firebase/configFirebase";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

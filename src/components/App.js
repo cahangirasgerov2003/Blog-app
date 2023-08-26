@@ -11,11 +11,12 @@ import AddBlog from "./AddBlog";
 import EditBlog from "./EditBlog";
 import Login from "./Login";
 
-import createHistory from "history/createBrowserHistory";
-import firebase from "firebase";
+// import createHistory from "history/createBrowserHistory";
+import firebase from "firebase/app";
+import "firebase/auth";
 import { useDispatch } from "react-redux";
 
-export const history = createHistory();
+// export const history = createHistory();
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,15 +27,19 @@ const App = () => {
         console.log("Success Login !");
         dispatch({
           type: "LOGIN",
+          uid: user.uid,
         });
       } else {
         console.log("Success Logout !");
         dispatch({
           type: "LOGOUT",
         });
+        dispatch({
+          type: "DELETE_BLOGS",
+        });
       }
     });
-  }, []);
+  }, [dispatch]);
 
   const router = createBrowserRouter([
     {
@@ -73,7 +78,12 @@ const App = () => {
     },
   ]);
 
-  return <RouterProvider history={history} router={router} />;
+  return (
+    <RouterProvider
+      // history={history}
+      router={router}
+    />
+  );
 };
 
 export default App;

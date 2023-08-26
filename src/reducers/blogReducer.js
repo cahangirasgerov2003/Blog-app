@@ -14,6 +14,8 @@ const blogReducer = (state = blogsState, action) => {
       });
     case "PUSH_STORE":
       return action.blogs;
+    case "DELETE_BLOGS":
+      return [];
     default:
       return state;
   }
