@@ -1,8 +1,18 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { logout } from "../actions/authActions";
+import { useSelector } from "react-redux";
 
 const MainLayout = () => {
+  const navigate = useNavigate();
+  const state = useSelector((state) => state.auth);
+  useEffect(() => {
+    console.log("salam");
+    if (state.isLoggin) {
+      navigate("/blogs");
+    }
+  }, [state.isLoggin]);
+
   return (
     <header>
       <h1>Blog App</h1>
@@ -13,6 +23,7 @@ const MainLayout = () => {
       <button
         onClick={() => {
           logout();
+          navigate("/");
         }}
       >
         Logout
