@@ -40,9 +40,10 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
+      <div className="formContainer">
         <form onSubmit={this.submitForm}>
           <div>
+            <p>Title :</p>
             <input
               type="text"
               placeholder="enter blog title"
@@ -56,6 +57,7 @@ class Form extends Component {
           </div>
 
           <div>
+            <p>Description :</p>
             <textarea
               placeholder="enter blog description"
               value={this.state.description}

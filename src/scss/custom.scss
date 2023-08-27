@@ -1,2 +1,42 @@
 @import "~bootstrap/scss/bootstrap.scss";
-@import "~bootstrap-icons/font/bootstrap-icons.scss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+
+:root {
+  --primary: #454b0e;
+  --secondary: #0000004b;
+}
+
+* {
+  box-sizing: border-box;
+  color: #fff;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--primary);
+  font-size: 24px;
+  padding: 20px;
+}
+
+a,
+a:hover {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+button,
+a {
+  padding: 6px 20px;
+  border-radius: 4px;
+  border: 1px solid white;
+  background-color: transparent;
+}
+
+button:hover,
+a:hover {
+  background-color: #5d632c6c;
+}
+
+p{
+  color: rgba(225, 236, 72, 0.753);
+}

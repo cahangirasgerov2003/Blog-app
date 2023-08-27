@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { logout } from "../actions/authActions";
 import { useSelector } from "react-redux";
+import "./mainLayout.css";
 
 const MainLayout = () => {
   const navigate = useNavigate();
@@ -14,24 +15,29 @@ const MainLayout = () => {
   }, [stateAuth.isLoggin]);
 
   return (
-    <header>
-      <h1>Blog App</h1>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/blogs">Blogs</NavLink>
-      <NavLink to="/create">Create</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
-      <button
-        onClick={() => {
-          logout();
-          navigate("/");
-        }}
-      >
-        Logout
-      </button>
-      <div>
+    <div className="mainLayout">
+      <header className="d-flex justify-content-between">
+        <h1 className="mainTitle">Blog App</h1>
+        <nav className="d-flex align-context-center ms-auto navLinkContainer">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/blogs">Blogs</NavLink>
+          <NavLink to="/create">Create</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+        </nav>
+        <button
+          onClick={() => {
+            logout();
+            navigate("/");
+          }}
+          className="logoutButton"
+        >
+          Logout
+        </button>
+      </header>
+      <main>
         <Outlet />
-      </div>
-    </header>
+      </main>
+    </div>
   );
 };
 

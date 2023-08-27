@@ -5,10 +5,10 @@ import MainLayout from "../layout/MainLayout";
 // import Home from "./Home";
 import BlogListPage from "./BlogListPage";
 import BlogDetails from "./BlogDetails";
-import Contact from "./Contact";
 import NotFound from "./NotFound";
 import AddBlog from "./AddBlog";
 import EditBlog from "./EditBlog";
+import Contact from "./Contact";
 import Login from "./Login";
 
 // import createHistory from "history/createBrowserHistory";
@@ -59,12 +59,12 @@ const App = () => {
           element: <BlogDetails />,
         },
         {
-          path: "/contact",
-          element: <Contact />,
-        },
-        {
           path: "/create",
           element: <AddBlog />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
         },
         {
           path: "/edit/:id",

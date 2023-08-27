@@ -8,17 +8,19 @@ const BlogList = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (props.auth.isLoggin === true) {
-      console.log("pullDb");
       dispatch(pullDb());
     }
   }, [dispatch, props.auth.isLoggin]);
   return (
-    <>
-      {props.blogs?.length}
+    <div>
       {props.blogs?.map((blog) => {
-        return <BlogListElement {...blog} key={blog.id} />;
+        return (
+          <div className="my-4">
+            <BlogListElement {...blog} key={blog.id} />
+          </div>
+        );
       })}
-    </>
+    </div>
   );
 };
 

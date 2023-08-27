@@ -1,0 +1,10 @@
+.blogsAction a,
+.blogsAction button {
+  margin-left: 20px;
+}
+.blogsListItem {
+  background-color: rgba(0, 0, 0, 0.616);
+  padding: 30px 20px;
+  border-radius: 10px;
+  list-style: none;
+}

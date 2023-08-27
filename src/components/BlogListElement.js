@@ -7,28 +7,28 @@ import React from "react";
 
 const BlogListElement = (props) => {
   return (
-    <ul>
+    <ul className="blogsListItem">
       <li>
-        {props.title} -{" "}
-        <Link to={`${props.id}`} style={{ textDecorationLine: "underline" }}>
-          Details
-        </Link>{" "}
-        -{" "}
-        <Link
-          to={`/edit/${props.id}`}
-          style={{ textDecorationLine: "underline" }}
-        >
-          Edit
-        </Link>{" "}
-        -{" "}
-        <button
-          type="button"
-          onClick={() => {
-            props.dispatch(removeDb(props.id));
-          }}
-        >
-          Delete
-        </button>
+        <p>{`* ${props.title}`}</p>
+        <div className="blogsAction">
+          <Link to={`${props.id}`} style={{ textDecorationLine: "underline" }}>
+            Details
+          </Link>
+          <Link
+            to={`/edit/${props.id}`}
+            style={{ textDecorationLine: "underline" }}
+          >
+            Edit
+          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              props.dispatch(removeDb(props.id));
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </li>
     </ul>
   );

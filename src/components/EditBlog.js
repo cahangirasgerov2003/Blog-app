@@ -10,7 +10,7 @@ const EditBlog = (props) => {
   const navigate = useNavigate();
   return (
     <div>
-      <h1>Edit Blog</h1>
+      <h1 className="editTitle">Edit Blog</h1>
       <Form
         blog={props.blogs.find((blog) => blog.id === params.id)}
         addForm={(blog) => {

@@ -4,7 +4,7 @@ import React from "react";
 
 const BlogDetailsElement = (props) => {
   return (
-    <>
+    <div className="blogDetailsContainer">
       <p>
         Blog Id :{" "}
         {props.id
@@ -29,7 +29,7 @@ const BlogDetailsElement = (props) => {
               129322
             )}`}
       </p>
-    </>
+    </div>
   );
 };
 
