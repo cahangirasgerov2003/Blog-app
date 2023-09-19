@@ -13,9 +13,9 @@ const BlogList = (props) => {
   }, [dispatch, props.auth.isLoggin]);
   return (
     <div>
-      {props.blogs?.map((blog) => {
+      {props.blogs?.map((blog, index) => {
         return (
-          <div className="my-4">
+          <div className="my-4" key={index}>
             <BlogListElement {...blog} key={blog.id} />
           </div>
         );

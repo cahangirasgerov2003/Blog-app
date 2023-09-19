@@ -25,6 +25,7 @@ const App = () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         console.log("Success Login !");
+        console.log(user);
         dispatch({
           type: "LOGIN",
           uid: user.uid,
